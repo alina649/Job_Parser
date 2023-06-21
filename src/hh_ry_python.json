@@ -1,0 +1,58 @@
+[
+    {
+        "id": "81482406",
+        "title": "Python разработчик",
+        "link": "https://hh.ru/vacancy/81482406",
+        "salary_min": 60000,
+        "salary_max": 120000,
+        "description": "Понимание принципов REST архитектуры. Уверенное владение <highlighttext>Python</highlighttext> 3. Опыт коммерческой разработки на Django. Уверенное владение SQL (СУБД PostgreSQL). "
+    },
+    {
+        "id": "81886894",
+        "title": "Программист Python",
+        "link": "https://hh.ru/vacancy/81886894",
+        "salary_min": 60000,
+        "salary_max": 120000,
+        "description": "Опыт работы с очередями RabbitMQ. Понимание принципов ООП. Знание языка программирования <highlighttext>Python</highlighttext> на уровне написания Service для Unix, но работать..."
+    },
+    {
+        "id": "82180471",
+        "title": "Программист Python/Django в веб-студию",
+        "link": "https://hh.ru/vacancy/82180471",
+        "salary_min": 30000,
+        "salary_max": 70000,
+        "description": "Знание <highlighttext>Python</highlighttext>/Django, JavaScript, Bootstrap, MySQL, HTML/CSS. Базовые знания GIT, желателен опыт коммерческой разработки. Приветствуются знания vue.js, nuxt.js, Django..."
+    },
+    {
+        "id": "81590600",
+        "title": "Стажер компьютерный криминалист",
+        "link": "https://hh.ru/vacancy/81590600",
+        "salary_min": 21600,
+        "salary_max": 25000,
+        "description": "Опыт программирования на <highlighttext>Python</highlighttext> и VBA. Опыт работы с шестнадцатеричными редакторами. Опыт программного восстановления удаленных данных с различных носителей информации. "
+    },
+    {
+        "id": "78496227",
+        "title": "Backend-разработчик",
+        "link": "https://hh.ru/vacancy/78496227",
+        "salary_min": 70000,
+        "salary_max": 140000,
+        "description": "Навыки. Умение работы с Git. Уметь установить и настроить необходимые программы на сервере (nginx, php-fpm, mysql/maria/percona). "
+    },
+    {
+        "id": "76891919",
+        "title": "Backend разработчик (Python)",
+        "link": "https://hh.ru/vacancy/76891919",
+        "salary_min": 150000,
+        "salary_max": null,
+        "description": "Уверенные знания <highlighttext>python</highlighttext>3.6 (желателен опыт коммерческой разработки от 2 лет). Опыт работы с Flask/Django. Опыт работы с..."
+    },
+    {
+        "id": "81993125",
+        "title": "Ведущий инженер-электрик/Главный специалист-электрик",
+        "link": "https://hh.ru/vacancy/81993125",
+        "salary_min": 150000,
+        "salary_max": null,
+        "description": "Опыт сопровождения ПД и работы с НГЭ, ГГЭ. AutoCad, Revit, Microsoft office (Приветствуется владение приложением Dynamo, языком программирования <highlighttext>Python</highlighttext>)."
+    }
+]
