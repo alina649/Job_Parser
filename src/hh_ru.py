@@ -24,7 +24,7 @@ class HHruJob(AbstractVacancy):
         return f"{self.__class__.__name__}({self.keyword},{self.count_vacancy})"
 
     def atribute(self):
-        """Вылавливаем атрибуты"""
+        """Создание атрибутыов для дальнейшей работы со значениями"""
         if self.site_connecting().status_code == 200:
             list_json = []
             data = self.site_connecting().json()
@@ -65,10 +65,12 @@ class HHruJob(AbstractVacancy):
         return response
 
     def to_json(self, list_job):
+        """Создание JSON файла с вакансиями"""
         with open('hh_ry_python.json', 'w', encoding='utf-8') as file:
             json.dump(list_job, file, sort_keys=False, indent=4, ensure_ascii=False)
 
     def conclusion_in_humans(self):
+        """Функция выводит на экран пользователя вакансии"""
         try:
             self.atribute()
             for i in self.atribute():

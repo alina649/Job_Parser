@@ -30,7 +30,7 @@ class SuperJob(AbstractVacancy):
         return f"{self.__class__.__name__}({self.keyword}, {self.town_person})"
 
     def atribute(self):
-        """Вылавливаем атрибуты"""
+        """Создание атрибутыов для дальнейшей работы со значениями"""
         if self.site_connecting().status_code == 200:
             data = self.site_connecting().json()
             for item in data['objects']:
@@ -71,10 +71,12 @@ class SuperJob(AbstractVacancy):
         return response
 
     def to_json(self, list_job):
+        """Создание JSON файла с вакансиями"""
         with open('sj_python.json', 'w', encoding='utf-8') as file:
             json.dump(list_job, file, sort_keys=False, indent=4, ensure_ascii=False)
 
     def conclusion_in_humans(self):
+        """Функция выводит на экран пользователя вакансии"""
         self.atribute()
         a = 0
         for i in self.atribute():
