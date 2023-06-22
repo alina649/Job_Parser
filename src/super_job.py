@@ -10,12 +10,12 @@ from src.abstract_class_vacancy import AbstractVacancy
 
 class SuperJob(AbstractVacancy):
 
-    def __init__(self, keyword=str, town_person=str):
+    def __init__(self, keyword=str, town_person=str, count_vacancy=int):
         self.list_json = []
 
         self.town_person = town_person
         self.keyword = keyword
-        self.count = 0
+        self.count_vacancy = count_vacancy
         self.api_key = None
 
         self.description = None
@@ -27,7 +27,7 @@ class SuperJob(AbstractVacancy):
         self.town = None
 
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.keyword}, {self.town_person})"
+        return f"{self.__class__.__name__}({self.keyword}, {self.town_person}, {self.count_vacancy})"
 
     def atribute(self):
         """Создание атрибутыов для дальнейшей работы со значениями"""
@@ -58,7 +58,8 @@ class SuperJob(AbstractVacancy):
     def site_connecting(self):
         """Подключаемся к API super_job_ry"""
         api_key: str = os.getenv('SJ_API_KEY')
-        params = {"town": self.town_person,  # количество вакансий
+        params = {"count": self.count_vacancy,
+                  "town": self.town_person,  # количество вакансий
                   "page": None,
                   "keyword": self.keyword, "archive": False, }
         headers = {
@@ -89,3 +90,6 @@ class SuperJob(AbstractVacancy):
                       f"Описание: {i['description']} \n")
         if a == 0:
             print('По ващему запросу ничего не найдено')
+
+
+
