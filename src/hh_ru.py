@@ -10,9 +10,11 @@ from src.abstract_class_vacancy import AbstractVacancy
 class HHruJob(AbstractVacancy):
     def __init__(self, keyword, count_vacancy):
 
+        # атрибуты, составляющие запрос полтзователя
         self.keyword = keyword
         self.count_vacancy = count_vacancy
 
+        # атрибуты,входящие в файл .json
         self.description = None
         self.salary_max = None
         self.salary_min = None
@@ -23,8 +25,8 @@ class HHruJob(AbstractVacancy):
     def __repr__(self):
         return f"{self.__class__.__name__}({self.keyword},{self.count_vacancy})"
 
-    def atribute(self):
-        """Создание атрибутыов для дальнейшей работы со значениями"""
+    def attribute(self, **kwargs):
+        """Получение вакансий с super_job_ru"""
         if self.site_connecting().status_code == 200:
             list_json = []
             data = self.site_connecting().json()
@@ -50,7 +52,7 @@ class HHruJob(AbstractVacancy):
         else:
             return None
 
-    def site_connecting(self):
+    def site_connecting(self, **kwargs):
         """Подключаемся к API hh_ry"""
         url = 'https://api.hh.ru/vacancies'
         params = {'text': self.keyword,  # Ключевое слово для поиска ваканчий
@@ -64,16 +66,16 @@ class HHruJob(AbstractVacancy):
         response = requests.get(url, params=params, headers=headers)
         return response
 
-    def to_json(self, list_job):
+    def to_json(self, **list_job):
         """Создание JSON файла с вакансиями"""
         with open('../data/hh_ry_python.json', 'w', encoding='utf-8') as file:
             json.dump(list_job, file, sort_keys=False, indent=4, ensure_ascii=False)
 
     def conclusion_in_humans(self):
-        """Функция выводит на экран пользователя вакансии"""
+        """Функция выводит на экран вакансии по запросам пользователя """
         try:
-            self.atribute()
-            for i in self.atribute():
+            self.attribute()
+            for i in self.attribute():
                 print(f"Название:{i['title']} \n"
                       f"Ссылка:{i['link']} \n"
                       f"Зарплата: от {i['salary_min']} до {i['salary_max']} руб.\n"

@@ -1,23 +1,19 @@
 import json
 import os
-
 import requests
-from abc import ABC
-from pprint import pprint
-
 from src.abstract_class_vacancy import AbstractVacancy
 
 
 class SuperJob(AbstractVacancy):
-
     def __init__(self, keyword=str, town_person=str, count_vacancy=int):
         self.list_json = []
 
+        # атрибуты, составляющие запрос полтзователя
         self.town_person = town_person
         self.keyword = keyword
         self.count_vacancy = count_vacancy
-        self.api_key = None
 
+        # атрибуты,входящие в файл .json
         self.description = None
         self.salary_max = None
         self.salary_min = None
@@ -29,10 +25,11 @@ class SuperJob(AbstractVacancy):
     def __repr__(self):
         return f"{self.__class__.__name__}({self.keyword}, {self.town_person}, {self.count_vacancy})"
 
-    def atribute(self):
-        """Создание атрибутыов для дальнейшей работы со значениями"""
+    def attribute(self, **kwargs):
+        """Получение вакансий с super_job_ru"""
         if self.site_connecting().status_code == 200:
             data = self.site_connecting().json()
+
             for item in data['objects']:
                 self.title = item['profession']
                 self.id = item['id']
@@ -55,8 +52,8 @@ class SuperJob(AbstractVacancy):
         else:
             return None
 
-    def site_connecting(self):
-        """Подключаемся к API super_job_ry"""
+    def site_connecting(self, **kwargs):
+        """Подключение к API super_job_ru"""
         api_key: str = os.getenv('SJ_API_KEY')
         params = {"count": self.count_vacancy,
                   "town": self.town_person,  # количество вакансий
@@ -71,16 +68,16 @@ class SuperJob(AbstractVacancy):
         response = requests.get('https://api.superjob.ru/2.0/vacancies/', headers=headers, params=params)
         return response
 
-    def to_json(self, list_job):
+    def to_json(self, **list_job):
         """Создание JSON файла с вакансиями"""
         with open('../data/sj_python.json', 'w', encoding='utf-8') as file:
             json.dump(list_job, file, sort_keys=False, indent=4, ensure_ascii=False)
 
     def conclusion_in_humans(self):
-        """Функция выводит на экран пользователя вакансии"""
-        self.atribute()
+        """Функция выводит на экран вакансии по запросам пользователя """
+        self.attribute()
         a = 0
-        for i in self.atribute():
+        for i in self.attribute():
             if str(self.town_person) == str(i['town']):
                 a += 1
                 print(f"{a}. Город:{i['town']} \n"
@@ -90,6 +87,3 @@ class SuperJob(AbstractVacancy):
                       f"Описание: {i['description']} \n")
         if a == 0:
             print('По ващему запросу ничего не найдено')
-
-
-
