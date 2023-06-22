@@ -1,5 +1,5 @@
-from src.hh_ru import HHruJob
-from src.supe_job import SuperJob
+from hh_ru import HHruJob
+from supe_job import SuperJob
 
 
 def main():
