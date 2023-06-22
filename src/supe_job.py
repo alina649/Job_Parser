@@ -72,7 +72,7 @@ class SuperJob(AbstractVacancy):
 
     def to_json(self, list_job):
         """Создание JSON файла с вакансиями"""
-        with open('sj_python.json', 'w', encoding='utf-8') as file:
+        with open('../data/sj_python.json', 'w', encoding='utf-8') as file:
             json.dump(list_job, file, sort_keys=False, indent=4, ensure_ascii=False)
 
     def conclusion_in_humans(self):
