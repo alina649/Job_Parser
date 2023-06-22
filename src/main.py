@@ -1,5 +1,5 @@
 from hh_ru import HHruJob
-from supe_job import SuperJob
+from super_job import SuperJob
 
 
 def main():
@@ -18,7 +18,8 @@ def main():
         print(vacancy.conclusion_in_humans())
 
     if choosing_platform == 'J':
-        vacancy = SuperJob(keyword, city)
+        count_vacancy = input('Введите количество ваканий: \n')
+        vacancy = SuperJob(keyword, city, count_vacancy)
         print("Ваши вакансии")
         print(vacancy.conclusion_in_humans())
 
